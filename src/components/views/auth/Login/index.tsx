@@ -1,45 +1,48 @@
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 
-const RegisterView: React.FC = () => {
+const LoginView: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const callbackUrl: any = query.callbackUrl || "/";
+
   const hadleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
     setError("");
     const form = event.target as HTMLFormElement;
-    const data = {
-      fullname: form.fullname.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      password: form.password.value,
-    };
-
-    const result = await fetch("/api/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (result.status === 200) {
-      form.reset();
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: form.email.value,
+        password: form.password.value,
+        callbackUrl,
+      });
+      console.log(res);
+      if (!res?.error) {
+        setIsLoading(false);
+        form.reset();
+        push(callbackUrl);
+      } else {
+        setIsLoading(false);
+        setError("Email or password is incorrect");
+      }
+    } catch (error) {
       setIsLoading(false);
-      push("/auth/login");
-    } else {
-      setIsLoading(false);
-      setError("Email already registered");
+      setError("Email or password is incorrect : " + error);
+      console.log(error);
     }
   };
 
   return (
     <div className="flex items-center justify-center flex-col h-[100vh] w-full">
-      <h1 className="text-[32px] mb-[10px] font-semibold">Register</h1>
+      <h1 className="text-[32px] mb-[10px] font-semibold">Login</h1>
 
       <div className="w-[30%] p-[30px] shadow mb-[20px]">
         {error && (
@@ -49,17 +52,6 @@ const RegisterView: React.FC = () => {
         )}
         <form onSubmit={hadleSubmit}>
           <div className="flex flex-col mb-[20px]">
-            <label htmlFor="fullname" className="font-medium">
-              Full Name
-            </label>
-            <input
-              name="fullname"
-              id="fullname"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="text"
-            />
-          </div>
-          <div className="flex flex-col mb-[20px]">
             <label htmlFor="email">Email</label>
             <input
               name="email"
@@ -68,15 +60,7 @@ const RegisterView: React.FC = () => {
               type="email"
             />
           </div>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="phone">Phone</label>
-            <input
-              name="phone"
-              id="phone"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="text"
-            />
-          </div>
+
           <div className="flex flex-col mb-[20px]">
             <label htmlFor="password">Password</label>
             <input
@@ -90,13 +74,13 @@ const RegisterView: React.FC = () => {
             type="submit"
             className="bg-primary cursor-pointer rounded text-white w-full p-[10px]"
           >
-            {isLoading ? "Loading ..." : "Register"}
+            {isLoading ? "Loading ..." : "Login"}
           </button>
         </form>
       </div>
       <p>
-        Have an account? Sign in{" "}
-        <Link className="text-primary" href="/auth/login">
+        Dont Have an account? Sign up{" "}
+        <Link className="text-primary" href="/auth/register">
           here
         </Link>
       </p>
@@ -104,4 +88,4 @@ const RegisterView: React.FC = () => {
   );
 };
 
-export default RegisterView;
+export default LoginView;

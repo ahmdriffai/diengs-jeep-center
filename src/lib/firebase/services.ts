@@ -43,7 +43,7 @@ export async function signup(
 
   // get user data
   const snapshot = await getDocs(q);
-  const data = snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+  const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
   // validate user data is registered
   if (data.length > 0) {
@@ -66,4 +66,18 @@ export async function signup(
         console.log(error);
       });
   }
+}
+
+export async function signin(email: string) {
+  // query
+  const q = query(collection(db, "users"), where("email", "==", email));
+
+  // get user data
+  const snapshot = await getDocs(q);
+  const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+  if (data) {
+    return data[0];
+  }
+  return null;
 }
