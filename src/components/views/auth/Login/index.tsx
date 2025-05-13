@@ -1,3 +1,5 @@
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -44,7 +46,6 @@ const LoginView: React.FC = () => {
   return (
     <div className="flex items-center justify-center flex-col h-[100vh] w-full">
       <h1 className="text-[32px] mb-[10px] font-semibold">Login</h1>
-
       <div className="w-[350px] p-[30px] shadow mb-[20px]">
         {error && (
           <div className="p-3 border my-3 rounded border-merah w-full bg-merah/10">
@@ -52,41 +53,33 @@ const LoginView: React.FC = () => {
           </div>
         )}
         <form onSubmit={hadleSubmit}>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              id="email"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="email"
-            />
-          </div>
-
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              id="password"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-primary cursor-pointer rounded text-white w-full p-[10px]"
-          >
+          <Input
+            name="email"
+            type="email"
+            placeholder="Masukan email"
+            label="Email"
+          />
+          <Input
+            name="password"
+            type="password"
+            placeholder="Masukan password"
+            label="Password"
+          />
+          <Button variant="primary" type="submit" strech>
             {isLoading ? "Loading ..." : "Login"}
-          </button>
+          </Button>
         </form>
         <hr className="my-[20px]" />
         <div className="w-full">
-          <button
+          <Button
             onClick={() => signIn("google", { callbackUrl, redirect: false })}
-            className="bg-white cursor-pointer rounded flex items-center justify-center gap-x-3 text-black border w-full p-[10px]"
+            type="button"
+            icon={<FcGoogle size={25} />}
+            variant="outlined"
+            strech
           >
-            <FcGoogle size={25} />
             Login with Google
-          </button>
+          </Button>
         </div>
       </div>
       <p>

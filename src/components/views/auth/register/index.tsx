@@ -1,3 +1,4 @@
+import Input from "@/components/ui/Input";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
@@ -41,51 +42,35 @@ const RegisterView: React.FC = () => {
     <div className="flex items-center justify-center flex-col h-[100vh] w-full">
       <h1 className="text-[32px] mb-[10px] font-semibold">Register</h1>
 
-      <div className="w-[30%] p-[30px] shadow mb-[20px]">
+      <div className="w-[350px] p-[30px] shadow mb-[20px]">
         {error && (
           <div className="p-3 border my-3 rounded border-merah w-full bg-merah/10">
             {error}
           </div>
         )}
         <form onSubmit={hadleSubmit}>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="fullname" className="font-medium">
-              Full Name
-            </label>
-            <input
-              name="fullname"
-              id="fullname"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="text"
-            />
-          </div>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              id="email"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="email"
-            />
-          </div>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="phone">Phone</label>
-            <input
-              name="phone"
-              id="phone"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="text"
-            />
-          </div>
-          <div className="flex flex-col mb-[20px]">
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              id="password"
-              className="p-[10px] bg-abu3 mt-[5px] outline-0 rounded"
-              type="password"
-            />
-          </div>
+          <Input
+            name="fullname"
+            label="Full Name"
+            placeholder="Masukan Fullname"
+          />
+
+          <Input
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="Masukan Email"
+          />
+
+          <Input name="phone" label="phone" placeholder="Masukan Phone" />
+
+          <Input
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="Masukan Password"
+          />
+
           <button
             type="submit"
             className="bg-primary cursor-pointer rounded text-white w-full p-[10px]"
