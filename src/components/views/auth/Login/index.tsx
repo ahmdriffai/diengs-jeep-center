@@ -2,6 +2,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 
 const LoginView: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -44,7 +45,7 @@ const LoginView: React.FC = () => {
     <div className="flex items-center justify-center flex-col h-[100vh] w-full">
       <h1 className="text-[32px] mb-[10px] font-semibold">Login</h1>
 
-      <div className="w-[30%] p-[30px] shadow mb-[20px]">
+      <div className="w-[350px] p-[30px] shadow mb-[20px]">
         {error && (
           <div className="p-3 border my-3 rounded border-merah w-full bg-merah/10">
             {error}
@@ -77,6 +78,16 @@ const LoginView: React.FC = () => {
             {isLoading ? "Loading ..." : "Login"}
           </button>
         </form>
+        <hr className="my-[20px]" />
+        <div className="w-full">
+          <button
+            onClick={() => signIn("google", { callbackUrl, redirect: false })}
+            className="bg-white cursor-pointer rounded flex items-center justify-center gap-x-3 text-black border w-full p-[10px]"
+          >
+            <FcGoogle size={25} />
+            Login with Google
+          </button>
+        </div>
       </div>
       <p>
         Dont Have an account? Sign up{" "}

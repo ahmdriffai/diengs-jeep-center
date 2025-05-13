@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import bcrypt from "bcrypt";
 import {
   addDoc,
@@ -80,4 +81,25 @@ export async function signin(email: string) {
     return data[0];
   }
   return null;
+}
+
+export async function loginWithGoogle(
+  data: any,
+  callback: (data: any) => void
+) {
+  // query
+  const q = query(collection(db, "users"), where("email", "==", data.email));
+
+  // get user data
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+  if (user.length > 0) {
+    callback(user[0]);
+  } else {
+    data.role = "member";
+    await addDoc(collection(db, "users"), data).then(() => {
+      callback(data);
+    });
+  }
 }
