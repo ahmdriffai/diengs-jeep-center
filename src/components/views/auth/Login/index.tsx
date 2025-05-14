@@ -1,7 +1,7 @@
+import AuthLayout from "@/components/layouts/AuthLayout";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -44,51 +44,42 @@ const LoginView: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-col h-[100vh] w-full">
-      <h1 className="text-[32px] mb-[10px] font-semibold">Login</h1>
-      <div className="w-[350px] p-[30px] shadow mb-[20px]">
-        {error && (
-          <div className="p-3 border my-3 rounded border-merah w-full bg-merah/10">
-            {error}
-          </div>
-        )}
-        <form onSubmit={hadleSubmit}>
-          <Input
-            name="email"
-            type="email"
-            placeholder="Masukan email"
-            label="Email"
-          />
-          <Input
-            name="password"
-            type="password"
-            placeholder="Masukan password"
-            label="Password"
-          />
-          <Button variant="primary" type="submit" strech>
-            {isLoading ? "Loading ..." : "Login"}
-          </Button>
-        </form>
-        <hr className="my-[20px]" />
-        <div className="w-full">
-          <Button
-            onClick={() => signIn("google", { callbackUrl, redirect: false })}
-            type="button"
-            icon={<FcGoogle size={25} />}
-            variant="outlined"
-            strech
-          >
-            Login with Google
-          </Button>
-        </div>
+    <AuthLayout
+      link="/auth/register"
+      error={error}
+      title="Login"
+      linkText="Don't have account ? Sign up "
+    >
+      <form onSubmit={hadleSubmit}>
+        <Input
+          name="email"
+          type="email"
+          placeholder="Masukan email"
+          label="Email"
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Masukan password"
+          label="Password"
+        />
+        <Button variant="primary" type="submit" strech>
+          {isLoading ? "Loading ..." : "Login"}
+        </Button>
+      </form>
+      <hr className="my-[20px]" />
+      <div className="w-full">
+        <Button
+          onClick={() => signIn("google", { callbackUrl, redirect: false })}
+          type="button"
+          icon={<FcGoogle size={25} />}
+          variant="outlined"
+          strech
+        >
+          Login with Google
+        </Button>
       </div>
-      <p>
-        Dont Have an account? Sign up{" "}
-        <Link className="text-primary" href="/auth/register">
-          here
-        </Link>
-      </p>
-    </div>
+    </AuthLayout>
   );
 };
 
