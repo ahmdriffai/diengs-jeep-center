@@ -32,8 +32,6 @@ const Button: React.FC<ButtonProps> = ({
     }
   }
 
-  console.log(variantClass);
-
   return (
     <button
       type={type}
