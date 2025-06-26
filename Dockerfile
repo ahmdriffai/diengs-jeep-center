@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 3. Salin file konfigurasi dan dependencies
 COPY package*.json ./
-COPY .env .env
+COPY .env.local .env
 
 # 4. Install dependencies
 RUN npm install
