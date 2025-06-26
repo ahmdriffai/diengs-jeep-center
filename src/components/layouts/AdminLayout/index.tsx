@@ -1,8 +1,8 @@
-import Sidebar, { MenuSidebar } from "@/components/fragments/Sidebar";
 import { ReactNode } from "react";
 import { FaCarSide } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
 import { MdSpaceDashboard } from "react-icons/md";
+import Sidebar, { MenuSidebar } from "../../fragments/Sidebar";
 
 interface AdminLayoutProps {
   children: ReactNode;

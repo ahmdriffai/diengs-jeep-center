@@ -1,4 +1,4 @@
-import { signup } from "@/services/auth/services";
+import { signup } from "@/src/services/auth/services";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(

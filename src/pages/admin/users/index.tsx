@@ -1,5 +1,5 @@
-import AdminUserView from "@/components/views/admin/Users";
-import userService from "@/services/user";
+import AdminUserView from "@/src/components/views/admin/Users";
+import userService from "@/src/services/user";
 import { useEffect, useState } from "react";
 
 const AdminUserPage: React.FC = () => {

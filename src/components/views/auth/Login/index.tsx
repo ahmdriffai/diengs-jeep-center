@@ -1,6 +1,6 @@
-import AuthLayout from "@/components/layouts/AuthLayout";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import AuthLayout from "@/src/components/layouts/AuthLayout";
+import Button from "@/src/components/ui/Button";
+import Input from "@/src/components/ui/Input";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";

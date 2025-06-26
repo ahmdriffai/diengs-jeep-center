@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { retriveData, updateData } from "@/lib/firebase/services";
+
+import { retriveData, updateData } from "@/src/lib/firebase/services";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(

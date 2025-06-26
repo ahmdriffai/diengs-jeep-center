@@ -1,4 +1,4 @@
-import LoginView from "@/components/views/auth/Login";
+import LoginView from "@/src/components/views/auth/Login";
 
 const LoginPage: React.FC = () => {
   return (

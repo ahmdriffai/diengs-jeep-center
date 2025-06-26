@@ -1,9 +1,9 @@
-import Button from "@/components/ui/Button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CgMenuBoxed } from "react-icons/cg";
 import { RxCross2 } from "react-icons/rx";
+import Button from "../../ui/Button";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

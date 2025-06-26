@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { addData, retriveDataByField } from "@/lib/firebase/services";
+import { addData, retriveDataByField } from "@/src/lib/firebase/services";
 import bcrypt from "bcrypt";
 
 export async function signup(

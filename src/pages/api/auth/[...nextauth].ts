@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { loginWithGoogle, signin } from "@/services/auth/services";
+
+import { loginWithGoogle, signin } from "@/src/services/auth/services";
 import { compare } from "bcrypt";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";

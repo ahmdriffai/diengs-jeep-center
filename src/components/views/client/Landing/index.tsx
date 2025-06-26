@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Card from "@/components/fragments/Card";
-import FormSearch from "@/components/fragments/FormSearch";
-import Hero from "@/components/fragments/Hero";
-import Title from "@/components/ui/Title";
+
 import { useRef } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Footer from "@/components/fragments/Footer";
-import Gallery from "@/components/fragments/Gallery";
+import Card from "@/src/components/fragments/Card";
+import Footer from "@/src/components/fragments/Footer";
+import FormSearch from "@/src/components/fragments/FormSearch";
+import Gallery from "@/src/components/fragments/Gallery";
+import Hero from "@/src/components/fragments/Hero";
+import Title from "@/src/components/ui/Title";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/pagination";

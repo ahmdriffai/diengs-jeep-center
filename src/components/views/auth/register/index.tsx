@@ -1,6 +1,6 @@
-import AuthLayout from "@/components/layouts/AuthLayout";
-import Input from "@/components/ui/Input";
-import authService from "@/services/auth";
+import AuthLayout from "@/src/components/layouts/AuthLayout";
+import Input from "@/src/components/ui/Input";
+import authService from "@/src/services/auth";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
 

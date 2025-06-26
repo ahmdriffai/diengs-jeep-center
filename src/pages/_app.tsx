@@ -1,9 +1,9 @@
-import Navbar from "@/components/fragments/Navbar";
-import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import { Nunito } from "next/font/google";
 import { useRouter } from "next/router";
+import Navbar from "../components/fragments/Navbar";
+import "../styles/globals.css";
 
 const nunito = Nunito({
   subsets: ["latin"],

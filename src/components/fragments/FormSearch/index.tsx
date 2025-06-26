@@ -1,7 +1,7 @@
-import DatePicker from "@/components/ui/DatePicker";
-import SearchInput from "@/components/ui/SearchInput";
 import { FaUserGroup } from "react-icons/fa6";
 import { PiJeepBold } from "react-icons/pi";
+import DatePicker from "../../ui/DatePicker";
+import SearchInput from "../../ui/SearchInput";
 
 const FormSearch: React.FC = () => {
   return (

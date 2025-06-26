@@ -1,8 +1,8 @@
-import ClientLandingView from "@/components/views/client/Landing";
 import Head from "next/head";
 
 // Import Swiper styles
 import "swiper/css";
+import ClientLandingView from "../components/views/client/Landing";
 
 export default function Home() {
   return (

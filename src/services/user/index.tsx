@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import instance from "@/lib/axios/instance";
+
+import instance from "@/src/lib/axios/instance";
 
 const userService = {
   getAllUsers: () => instance.get("/api/users"),

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import AdminLayout from "@/components/layouts/AdminLayout";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import Modal from "@/components/ui/Modal";
+
+import AdminLayout from "@/src/components/layouts/AdminLayout";
+import Button from "@/src/components/ui/Button";
+import Input from "@/src/components/ui/Input";
+import Modal from "@/src/components/ui/Modal";
 import React, { useState } from "react";
 
 interface AdminUserViewProps {

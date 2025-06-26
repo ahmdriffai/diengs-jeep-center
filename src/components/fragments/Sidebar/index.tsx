@@ -1,9 +1,9 @@
-import Button from "@/components/ui/Button";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { LuLogOut } from "react-icons/lu";
+import Button from "../../ui/Button";
 
 export type MenuSidebar = {
   title: string;

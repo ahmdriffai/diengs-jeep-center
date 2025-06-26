@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/layouts/AdminLayout";
+import AdminLayout from "@/src/components/layouts/AdminLayout";
 
 const AdminPage: React.FC = () => {
   return (
