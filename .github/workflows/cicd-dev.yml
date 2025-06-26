@@ -25,10 +25,6 @@ jobs:
           node-version: 18
           cache: "npm"
 
-      # 🔒 Load environment variables (optional)
-      - name: Copy .env file
-        run: cp .env.example .env
-
       # 📦 Install dependencies
       - name: Install Dependencies
         run: npm ci
