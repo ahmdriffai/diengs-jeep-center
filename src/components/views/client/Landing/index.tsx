@@ -42,7 +42,7 @@ const ClientLandingView: React.FC = () => {
           </button>
         </div>
 
-        <div className="z-0 relative">
+        <div className="z-0 relative ">
           <Swiper
             spaceBetween={60}
             slidesPerView={1}

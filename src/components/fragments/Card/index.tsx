@@ -1,6 +1,6 @@
 const Card: React.FC = () => {
   return (
-    <div className="w-80 shadow-lg p-4  hover:shadow-xl mb-2 hover:-translate-1 transition-all rounded-2xl">
+    <div className="w-80 shadow-lg p-4  hover:shadow-xl mb-6 hover:-translate-1 transition-all rounded-2xl">
       {/* image */}
       <div className="rounded-xl overflow-hidden">
         <img src="./jeep.png" alt="" />

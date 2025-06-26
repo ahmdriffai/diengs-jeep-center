@@ -1,0 +1,60 @@
+name: Next.js CI/CD for Development
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      # ✅ Checkout source code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 🟩 Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      # 🔒 Load environment variables (optional)
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      # 📦 Install dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # 🏗️ Build the app
+      - name: Build App
+        run: npm run build
+
+      # ✅ Run unit tests
+      - name: Run Tests
+        run: npm test
+
+      # 🐳 Docker: Login to GitHub Container Registry
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🐳 Docker: Build image
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}:dev .
+
+      # 🚀 Docker: Push image
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ github.repository }}:dev

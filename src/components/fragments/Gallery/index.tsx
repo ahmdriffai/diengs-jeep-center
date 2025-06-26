@@ -4,27 +4,12 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 const images = [
   "/gallery1.jpeg",
   "/gallery2.jpeg",
-  "/gallery2.jpeg",
-  "/gallery2.jpeg",
-  "/gallery2.jpeg",
-  "/gallery2.jpeg",
-  "/gallery2.jpeg",
-  "/gallery2.jpeg",
   "/gallery3.jpeg",
   "/gallery4.jpeg",
   "/gallery5.jpeg",
   "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
-  "/gallery6.jpeg",
+  "/hero1.jpg",
+  "/hero2.jpg",
 ];
 
 const MAX_DISPLAY = 6;
@@ -104,7 +89,7 @@ const Gallery: React.FC = () => {
               ✕
             </button>
           </div>
-          <p className="text-white mt-2 text-sm">
+          <p className=" mt-2 text-sm">
             Gambar {lightboxIndex + 1} dari {images.length}
           </p>
         </div>
