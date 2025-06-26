@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       break;
     }
     case "outlined": {
-      variantClass = "text-black bg-white border";
+      variantClass = "text-black bg-white border border-primary";
       break;
     }
   }
@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`cursor-pointer rounded flex items-center justify-center gap-x-3 border  px-[30px] py-[8px] ${
+      className={`cursor-pointer rounded-3xl flex items-center justify-center gap-x-3 border px-10 py-2 ${
         strech && "w-full"
       } ${variantClass} ${className}`}
     >
